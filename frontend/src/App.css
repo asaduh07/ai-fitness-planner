@@ -1,0 +1,319 @@
+/* --- Step indicator --- */
+
+.steps {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--bg);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.step-label {
+  font-size: 11px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.step-item.active .step-num {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.step-item.active .step-label {
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+.step-item.done .step-num {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.step-line {
+  flex: 1 1 auto;
+  min-width: 12px;
+  height: 1px;
+  background: var(--border);
+  margin: 11px 6px 0;
+}
+
+/* --- Step transition --- */
+
+.step-content {
+  animation: step-fade-in 220ms ease;
+}
+
+@keyframes step-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Loading spinner --- */
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(127, 127, 127, 0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: -2px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Error state --- */
+
+.error-box {
+  border: 1px solid var(--error-border);
+  background: var(--error-bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: left;
+  color: var(--error);
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--text-h);
+  text-align: left;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+button {
+  font: inherit;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: var(--border);
+  color: var(--text);
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--error);
+  font-size: 14px;
+  text-align: left;
+}
+
+.note {
+  color: var(--text);
+  font-size: 14px;
+  text-align: left;
+}
+
+/* --- Photo capture --- */
+
+.photo-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.photo-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.photo-slot-preview {
+  position: relative;
+  width: 160px;
+  height: 220px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--code-bg);
+
+  @media (max-width: 375px) {
+    width: 130px;
+    height: 180px;
+  }
+}
+
+.photo-slot-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pose-guide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.rotate-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--text);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.6s ease 2.5s;
+}
+
+.rotate-hint-hidden {
+  opacity: 0;
+}
+
+.canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  @media (max-width: 768px) {
+    height: 340px;
+  }
+
+  @media (max-width: 480px) {
+    height: 300px;
+  }
+}
+
+/* --- Estimate display --- */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+
+  @media (max-width: 375px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+
+  @media (max-width: 375px) {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+  }
+}
+
+.stat-card .value {
+  font-size: 28px;
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+.stat-card .label {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.estimate-box {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+  margin: 16px 0;
+}
+
+.estimate-box .disclaimer {
+  font-size: 13px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+/* --- Plan dashboard --- */
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0 24px;
+}
+
+.plan-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.plan-card .note {
+  display: block;
+  margin: 2px 0 8px;
+}
+
+.plan-card ul {
+  margin: 0;
+  padding-left: 20px;
+}
