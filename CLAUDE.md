@@ -105,6 +105,8 @@ areas by clicking on a 3D humanoid figure instead of a dropdown/checklist.
 ## Resume framing
 Project name: **Physique AI — Interactive Body Composition & Indian
 Fitness Planner**
+Repo: https://github.com/asaduh07/ai-fitness-planner (the repo slug is
+`ai-fitness-planner` — "Physique AI" is the display/product name only)
 One-liner: React + Three.js web app that estimates body composition from
 guided photo capture, calculates real BMR/TDEE targets, and generates
 India-specific veg/non-veg diet and workout plans through an interactive
